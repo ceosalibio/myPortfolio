@@ -3,29 +3,29 @@
         <v-container >
                     <!-- <v-divider /> -->
                  
-                        <h4 class="text-center">ABOUT ME</h4>
+                        <h2 class="text-center">ABOUT ME</h2>
                         <!-- <span style="color:gray;">{{ objective }}</span> -->
                   
                         <ul class="no-dot-list list-text">
-                            <h3 class="color-text"><v-icon color="primary">mdi-account-tie</v-icon>Personal Information:</h3>
+                            <h2 class="color-text"><v-icon color="primary">mdi-account-tie</v-icon>Personal Information:</h2>
                             <br>
-                            <li v-for="(item, i) in about" :key="i" style="display: flex;" >
+                            <li v-for="(item, i) in about" :key="i" style="display: flex;" class="list-font" >
                                 <b>{{item.text }}:</b>
                                 <v-spacer/>
                                     <div style="color:gray;text-align:right;">
-                                        <span 
+                                        <!-- <span 
                                         v-if="item.isLink">
                                             <a :href="'mailto:' + item.value">
                                                 {{ item.value }}
                                             </a>
-                                        </span> 
-                                        <span v-else>{{ item.value }}</span>
+                                        </span>  -->
+                                        <span>{{ item.value }}</span>
                                     </div>
                             </li>
                             <br>
-                            <h3 class="color-text"><v-icon color="primary">mdi-school-outline</v-icon>Educational Attaintment:</h3>
+                            <h2 class="color-text"><v-icon color="primary">mdi-school-outline</v-icon>Educational Attaintment:</h2>
                             <br>
-                            <li v-for="(item, i) in education" :key="i" style="display: flex;" >
+                            <li v-for="(item, i) in education" :key="i" style="display: flex;" class="list-font">
                                 <b>{{item.text }}</b>
                                 <v-spacer/>
                                     <div style="color:gray;text-align:right;">
@@ -38,7 +38,15 @@
                                         <span v-else>{{ item.value }}</span>
                                     </div>
                             </li>
+                            <br>
+                            <h2 class="color-text"><v-icon color="primary">mdi-chat-outline</v-icon>Langauge:</h2>
+                            <br>
+                            <li v-for="(item, i) in language" :key="i" style="display: flex;" class="list-font">
+                                <b>{{item }}</b>
+                            </li>
                         </ul>
+
+                        
              
         </v-container>
         
@@ -57,16 +65,18 @@
                         {text:'Date of Birth',value:'May 13,1991'},
                         {text:'Address',value:'General Trias, Cavite, Philippines'},
                         {text:'ZIP Code',value:'4107'},
-                        {text:'Email Address',value:'salibioarceo@gmail.com', isLink: true},
-                        {text:'Contact No',value:'+63967-608-7725'},
+                        // {text:'Email Address',value:'salibioarceo@gmail.com', isLink: true},
+                        // {text:'Contact No',value:'+63967-608-7725'},
                     ],
                 education:[
                         // {text:'School',value:'Year attended',center:true,},
-                        {text:'Cultihan-Bolbok Elementary School',value:'1997 - 2002'},
-                        {text:'Taal National High School',value:'2002 - 2007'},
-                        {text:'Crourse: Computer Hardware Services',value:'2008 - 2010'},
+                        // {text:'Cultihan-Bolbok Elementary School',value:'1997 - 2002'},
+                        // {text:'Taal National High School',value:'2002 - 2007'},
+                        {text:'Crourse: Computer Hardware Services',value:'2010'},
                         {text:'School: Rizal College of Taal',value:''},
-                ]
+                ],
+
+                language:['Filipino','English']
             }
         },
         computed:{
@@ -89,7 +99,7 @@
 
 <style scoped>
 .list-text{
-    font-size: 11px  !important;
+    font-size: 12px  !important;
 }
 .color-text{
     color:rgb(24, 148, 250);

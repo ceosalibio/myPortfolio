@@ -2,72 +2,25 @@
   <!-- <v-container> -->
 
   
-  <v-app id="inspire" class="main-container">
+  <v-app id="inspire" class="main-container d-flex d-sm-flex d-md-none">
 
-     <!--  <v-app-bar
-          app
-          color="#fff"
-          flat
-          height="70"
-          elevation="0"
-          
-      >
-        <v-container>
-          <v-row>
-            <v-toolbar-title
-                  class="font-weight-bold"
-                  style="color: #9d4ffd"
-              >
-                  CEO wORKs
-              </v-toolbar-title>
-
-              <v-spacer />
-              <div class="d-none d-md-block d-lg-block d-xl-block">
-                <div class="nav-links">
-                  <ul class="d-flex font-weight-light" style="list-style: none">
-                      <li
-                          class="mx-3"
-                          v-for="(link, index) in links"
-                          :key="index"
-                      >
-                          <a
-                              :href="link.link"
-                              :class="
-                                  activelink == link.name
-                                      ? 'active'
-                                      : 'a-link text-uppercase text-decoration-none'
-                              "
-                              @click="row_classes(link.name)"
-                              >{{ link.name }}
-                          </a>
-                          
-                      </li>
-                  </ul>
-                </div>
-              </div>
+        <div class="d-flex d-sm-flex d-md-none" v-if="store.routeName != 'home'">
+          <!-- <div class="menu-display" style="position: fixed; top: 0; left: 0; z-index: 1000;"> -->
+          <div class="menu-display">
+            <v-toolbar color="white" style="position: fixed; top: 0; left: 0; z-index: 1000;" >
+              <v-btn @click.stop="drawer = !drawer" icon flat ><v-icon>mdi-menu</v-icon></v-btn>
+              <v-spacer  />
+              <v-btn @click="backMain()"><v-icon>mdi-logout</v-icon></v-btn>
+            </v-toolbar>
            
-            <div class="d-flex d-sm-flex d-md-none">
-              <div class="menu-display">
-                <v-btn @click.stop="drawer = !drawer" icon ><v-icon>mdi-menu</v-icon></v-btn>
-              </div>
-            </div>
-           
-          </v-row>
-             
-          </v-container>
-         
-              
+          </div>
 
-       
-          
-      </v-app-bar>
-      <div v-if="drawer"  class="d-flex d-sm-flex d-md-none">
-        <v-navigation-drawer
+          <v-navigation-drawer
             v-model="drawer"
             location="top"
             :fixed="true"
             class="fixed-drawer"
-        >
+          >
             <v-list>
                 <v-list-item v-for="(link, index) in links" :key="index">
              
@@ -86,99 +39,69 @@
                 </v-list-item>
             </v-list>
          </v-navigation-drawer>
-     
-        </div> -->
-
-      <v-main class="ma-2">
+        </div>
+      <v-main class="mt-6">
           <router-view></router-view>
       </v-main>
    
   </v-app>
+
+<v-app id="inspire" class="main-container d-none d-md-block d-lg-block d-xl-block ">
+  <v-main>
+      <router-view></router-view>
+  </v-main>
+
+</v-app>
 <!-- </v-container> -->
 </template>
 
-<script>
+<script setup>
 // import axios from "axios";
-// import { mapActions, mapState } from "vuex";
-export default {
-  components: {
-
-  },
-  data: () => ({
-      links: [
+import { ref, onMounted, watch } from "vue";
+import { useRouter } from 'vue-router';
+import {storeData} from '@/store/pinia.js'
+const router = useRouter();
+const curRoute = ref('')
+const store = storeData()
+const links = ref([
           { name: "Home", link: "#home", icon: "home-outline" },
           {
-              name: "Services",
-              link: "#services",
+              name: "Experience",
+              link: "#experience",
               icon: "package-variant",
           },
           {
-              name: "About",
-              link: "#about",
+              name: "Skills",
+              link: "#skills",
               icon: "package-variant",
           },
           {
-              name: "Resume",
-              link: "#resume",
+              name: "Contact",
+              link: "#contact",
               icon: "package-variant",
-          },
-          {
-              name: "Works",
-              link: "#works",
-              icon: "package-variant",
-          },
+          }
      
-      ],
+      ])
+      const activelink = ref("Home")
+      const drawer = ref(false)
 
-      name: null,
-      section: null,
-      team: null,
-      picture: null,
+      const row_classes = (item)=>{
+        activelink.value = item;
+      }
+      const backMain = ()=>{
+        router.push({name : 'home'})
+        store.routeName = 'home'
+      }
 
-      openProgrammerSytemDialog: false,
-      openProgrammerInsertUpdateDialog: false,
-      openProgrammerTaskDialog: false,
-      openMasterDialog: false,
+      // watch(curRoute, (newValue, oldValue) => {
+      //     console.log(curRoute.value,newValue,'curRoute')
+      // })
 
-      programmer: {},
+      onMounted(() => {
+        // curRoute.value = router.currentRoute.value.path
+        // console.log(store.routeName,'test')
+      })
 
-      activelink: "Home",
-
-      routerName: null,
-
-      drawer: false,
-      items: [
-          // { text: "Dashboard", icon: "mdi-view-dashboard", to: "/" },
-          {
-              text: "Home",
-              icon: "mdi-home",
-              to: "/",
-          },
-          // { text: "Back to home", icon: "mdi-account", to: "/" },
-      ],
-
-  }),
-
-  methods: {
-
-      row_classes(item) {
-          // console.log("Hello ", item);
-          this.activelink = item;
-      },
-  },
-
-  computed: {
-      
-  },
-
-  mounted() {
-
-  },
-
-  watch: {
-   
-  },
-};
 </script>
 
 <style>

@@ -5,6 +5,7 @@ import store from './store'
 import vuetify from './plugins/vuetify'
 import { loadFonts } from './plugins/webfontloader'
 import { createPinia } from 'pinia'
+import VueApexCharts from "vue3-apexcharts";
 const pinia = createPinia()
 loadFonts()
 
@@ -13,5 +14,6 @@ createApp(App)
   .use(store)
   .use(pinia)
   .use(vuetify)
+  .use(VueApexCharts)
   .mount('#app')
 

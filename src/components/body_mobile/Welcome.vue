@@ -3,7 +3,7 @@
         <br>
         <!-- <v-container> -->
             <v-row>
-                <v-col cols="4">
+                <v-col cols="12">
                         <v-card flat color="primary" >
                             <v-card-title>HELLO IT'S CEO</v-card-title>
                             <v-card-text class="custom-card">
@@ -20,7 +20,7 @@
                         </v-card>
                 </v-col>
 
-                <v-col cols="4" >
+                <v-col cols="12" >
                     <v-card flat color="primary" > 
                         <v-card-title  class="text-center">MY EXPERTISE</v-card-title>
                         <v-card-text class="custom-card">
@@ -36,7 +36,7 @@
                     </v-card>
                 </v-col>
                 
-                <v-col cols="4"  class="text-center">
+                <v-col cols="12"  class="text-center">
                     <v-card color="primary">
                         <v-card-title >MY SERVICES</v-card-title>
                         <v-carousel 
@@ -49,8 +49,8 @@
                         
                             <v-carousel-item v-for="(item,i) in listService" :key="i">
                                 <v-list class="custom-list">
-                                    <v-icon size="70">{{ item.icon }}</v-icon>
-                                    <h2>{{ item.title }}</h2>
+                                    <v-icon size="50">{{ item.icon }}</v-icon>
+                                    <h3>{{ item.title }}</h3>
                                     <br>
                                     <v-list-item>
                                         {{ item.subtitle }}

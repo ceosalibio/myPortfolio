@@ -1,21 +1,23 @@
 <template>
     <div>
-        <v-card height="30vh" class="d-flex align-center justify-center text-center">
-            <v-card-text class="ma-15">
-                <span id="query">QUERY</span>
+        <v-card height="30vh" class="d-flex align-center justify-center text-center ">
+            <!-- <v-card-text class="ma-15"> -->
+                <v-img :src="coverImage" class="image-fit"/>
+                <!-- <span id="query">QUERY</span>
                 <span id="spacing">|</span>
-                <span id="builder">BUILDER</span>
-            </v-card-text>
+                <span id="builder">BUILDER</span> -->
+            <!-- </v-card-text> -->
         </v-card>
     </div>
 </template>
 
 <script>
 import cover from '../../assets/images/desk.jpg';
+import imageFull from '../../assets/images/fullstack.png';
 import {ref} from 'vue'
 export default {
     setup () {
-        const coverImage = ref(cover)
+        const coverImage = ref(imageFull)
 
         return {
             coverImage
@@ -44,4 +46,11 @@ export default {
     font-size:100px;
 
 }
+
+.image-fit {
+    max-width: 200%; /* Adjust as needed */
+    max-height: 100%; /* Adjust as needed */
+    width: auto;
+    height: auto;
+  }
 </style>

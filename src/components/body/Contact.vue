@@ -40,7 +40,7 @@ const contactItem = ref ([
     {image:gmail, text:'Email Address:', value:'salibioarceo@gmail.com'},
     {image:phone, text:'Phone Number:', value:'+63-967-608-7725'},
     {image:messenger, text:'Messeger', value:'Arceo Salibio'},
-    {image:github, text:'GitHub', value:'ceosalibio'},
+    {image:github, text:'GitHub', value:'https://github.com/ceosalibio'},
 ])
     
 </script>
